@@ -1,13 +1,12 @@
 // ==UserScript==
-// @name         DBL decline buttons
+// @name         Custom Decline Buttons
 // @namespace    http://tampermonkey.net/
-// @version      3.0
-// @description  Making my life less painful.
-// @author       BrammyS (best mod (o wait))
+// @version      4.1
+// @description  try to take over the world!
+// @author       You
 // @match        https://discordbots.org/moderation/decline*
 // @grant        none
-// @updateURL    https://github.com/BramEsendam/Custom-Dbl-Moderation-Buttons/raw/master/CustomDeclineButtons.user.js
-// @downloadURL  https://github.com/BramEsendam/Custom-Dbl-Moderation-Buttons/raw/master/CustomDeclineButtons.user.js
+
 // ==/UserScript==
 
 (function () {
@@ -30,23 +29,26 @@
         }
     }
 
-    addButton("Mentions NSFW", "Your bot mentions NSFW in the long description. Please remove any mentioning of NSFW features in your name and description.");
-    addButton("< 300 character ", "Your long description doesn't meet the 300 minimum character requirement.");
-    addButton("UrbanDic in non-NSFW", "Your Urban Dictionary command can be used in non-NSFW channels.");
-    addButton("NSFW reddit search", "Your Reddit command can be used to search NSFW images in non NSFW channels.");
-    addPromptedButton("Loli command", "Your ~input command provides explicit images of lolis, Please make sure that these images are not included in your bot as it is against Discord's Terms of Service to have them.", "Enter infringing command's name");
+        addButton("Spam Presence Change", "Your bot's presence changes every few seconds. The maximum frequency you can change your status is [5 times per minute (approx. every 12 seconds)](https://discordapp.com/developers/docs/topics/gateway#activity-object-example-activity-with-rich-presence); any faster than that is considered as Discord API Abuse. We suggest you change it to something more reasonable, such as every 120 seconds.");
+        addButton("Description mentions NSFW", "Your bot page mentions, or promotes NSFW functions in its descriptions. Please remove any mentioning of NSFW features.");
+    addButton("NSFW commands in non-NSFW", "Your bot has an NSFW command that can be used in non-NSFW channels. Please lock this command to only NSFW channels.");
+    addButton("NSFW Loli/Minors", "Your bot has a command produces NSFW images of lolis or minors which is against Discord TOS & Guidelines. We strongly advise not to use nekos.life's NSFW endpoints as a majority of the results may contain NSFW images of minors.");
     addButton("Copy/Paste widgets", "You are using the widgets of another bot in your long description. Please use your own widgets.");
-    addButton("NSFW command in SFW", "Your COMMANDNAME has NSFW content in it. Please lock this command to NSFW channels only.");
-    addButton("Reboot cmd in dms", "Your bot can be rebooted by anyone through Direct Messages.");
+    addButton("Open Reboot/Reload/Restart", "Your bot can be rebooted by anyone through Direct Messages.");
     addButton("Owner commands dm", "Your bot has owner commands which can be used by anyone via DMs.");
-    addButton("Long description copy-paste", "Your bot's long description is a copy-paste from another bot.");
-    addButton("Public eval", "Your bot has an open eval command. Please lock this command for developers only.");
-    addButton("Rainbow roles", "Your bot supports rainbow roles. This is API abuse and not allowed on Discord, please remove this feature entirely.");
-    addButton("Presence change spam", "Your bot's presence changes every few seconds which is considered API abuse, please limit the amount of times your bot changes it's status to a more reasonable amount, for example every 120 seconds.");
-    addButton("%50+ commands not working", "More than 50% of your commands listed on your bots page/help command do not provide a response.");
-    addPromptedButton("DM open owner command", "Your bot's owner-only \"~input\" command can be used in DMs by anybody. Please restrict this to bot owners only.", "Enter infringing command's name");
-    addPromptedButton("Spam command", "Your bot has a command (~input) which causes it to spam either a text channel or a user's DMs.", "Enter infringing command's name");
-    addPromptedBUtton("API Abuse", "Your bot abuses the Discord API.", "Enter sentence explaining abuse");
+    addButton("Long description copy-paste", "Your bot's long description is copied from another bot. Please write your own description and don't directly copy another bot.");
+    addButton("Public eval", "Your bot has an open eval command. Please lock this command for developers only to prevent misuse.");
+    addButton("Rainbow roles", "Your bot supports rainbow roles - roles that rapidly change colors to convey rainbows. This is considered as Discord API abuse and not allowed on Discord. Please remove this feature entirely.");
+    addButton("Majority of commands not working", "The majority of your commands listed on your bot's page, or help command do not provide a response, or does not seem to function/work.");
+    addButton("Spam commands", "Your bot has a command which causes it to spam either a text channel or a user's DMs.");
+    addButton("Loggin of all Messages",`Your bot stores/logs unnecessary information in your console and other places for no particular reason, which violates Discord ToS.
+Please refer to this section:
+2.4 End User Data. “End User Data” means all data associated with the content within the functionality enabled by the API or SDK, including but not limited to message content, message metadata, voice data and voice metadata. You acknowledge and agree that Discord and its end users, as applicable, retain all worldwide right, title and interest in and to the End User Data. If you have access to End User Data through the API or the SDK, you shall ensure that your Applications do not collect, use and/or disclose End User Data except (a) as necessary to exercise your rights under this Agreement, (b) in accordance with Discord’s Privacy Policy. If you have access to End User Data through the SDK, you additionally agree to get express permission from the End Users.`);
+    addPromptedButton("Unknown Author DMs", "Your bot has a DM command (~input) which allows anyone to DM a user without stating the author, which can be used maliciously.", "DM command name?");
+    addPromptedButton("Server List Command", "Your bot has a server list command, ~input, which is considered a privacy breach as it lists all the servers your bot is in. Please either limit this to the bot owner (you), or make it opt-in, or simply delete it.", "Server list command name?");
+    addPromptedButton("Suicide Command", "Your bot has a suicide command (~input) which is considered as glorification/promotion of suicide, which is against Discord ToS. Please remove this command entirely.", "What's the name of the suicide command?");
+    addPromptedButton("Bot Code in Long Desc", "Your bot description is your bot's ~input code. Your long description should not consist of your bot's code, it should be about what your bot does, command list, etc. Please rewrite your description to include more useful information about your bot.", "What language is the bot code in?");
+
 
 
     function addButton(buttonName, reason) {
@@ -70,7 +72,7 @@
         button.onclick = function () {
             var declineBox = document.getElementsByName("declinereason")[0]
             var input = prompt(promptText);
-            reason = reason.replace("~input", input);
+            reason = reason.replace("~input", "`" + input + "`");
             declineBox.value = reason;
             declineBox.focus();
         };
