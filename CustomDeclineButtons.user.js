@@ -3,9 +3,10 @@
 // @namespace    http://tampermonkey.net/
 // @version      4.1
 // @description  try to take over the world!
-// @author       You
+// @author       iara (worst mod hi)
 // @match        https://discordbots.org/moderation/decline*
 // @grant        none
+// @updateURL    https://github.com/miramallows/Custom-Dbl-Moderation-Buttons/blob/master/CustomDeclineButtons.user.js
 
 // ==/UserScript==
 
@@ -41,7 +42,7 @@
     addButton("Rainbow roles", "Your bot supports rainbow roles - roles that rapidly change colors to convey rainbows. This is considered as Discord API abuse and not allowed on Discord. Please remove this feature entirely.");
     addButton("Majority of commands not working", "The majority of your commands listed on your bot's page, or help command do not provide a response, or does not seem to function/work.");
     addButton("Spam commands", "Your bot has a command which causes it to spam either a text channel or a user's DMs.");
-    addButton("Loggin of all Messages",`Your bot stores/logs unnecessary information in your console and other places for no particular reason, which violates Discord ToS.
+    addButton("Logging of all Messages",`Your bot stores/logs unnecessary information in your console and other places for no particular reason, which violates Discord ToS.
 Please refer to this section:
 2.4 End User Data. “End User Data” means all data associated with the content within the functionality enabled by the API or SDK, including but not limited to message content, message metadata, voice data and voice metadata. You acknowledge and agree that Discord and its end users, as applicable, retain all worldwide right, title and interest in and to the End User Data. If you have access to End User Data through the API or the SDK, you shall ensure that your Applications do not collect, use and/or disclose End User Data except (a) as necessary to exercise your rights under this Agreement, (b) in accordance with Discord’s Privacy Policy. If you have access to End User Data through the SDK, you additionally agree to get express permission from the End Users.`);
     addPromptedButton("Unknown Author DMs", "Your bot has a DM command (~input) which allows anyone to DM a user without stating the author, which can be used maliciously.", "DM command name?");
