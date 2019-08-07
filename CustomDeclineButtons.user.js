@@ -30,6 +30,7 @@
         }
     }
 
+    addButton("Account/Subscription Generator", "We do not allow bots that generate accounts, or subscriptions for websites/services as they are against the services ToS and may be stolen.");
         addButton("Spam Presence Change", "Your bot's presence changes every few seconds. The maximum frequency you can change your status is [5 times per minute (approx. every 12 seconds)](https://discordapp.com/developers/docs/topics/gateway#activity-object-example-activity-with-rich-presence); any faster than that is considered as Discord API Abuse. We suggest you change it to something more reasonable, such as every 120 seconds.");
         addButton("Description mentions NSFW", "Your bot page mentions, or promotes NSFW functions in its descriptions. Please remove any mentioning of NSFW features.");
     addButton("NSFW Loli/Minors", "Your bot has a command produces NSFW images of lolis or minors which is against Discord TOS & Guidelines. We strongly advise not to use nekos.life's NSFW endpoints as a majority of the results may contain NSFW images of minors.");
@@ -49,6 +50,7 @@ Please refer to this section:
     addPromptedButton("Server List Command", "Your bot has a server list command, ~input, which is considered a privacy breach as it lists all the servers your bot is in. Please either limit this to the bot owner (you), or make it opt-in, or simply delete it.", "Server list command name?");
     addPromptedButton("Suicide Command", "Your bot has a suicide command (~input) which is considered as glorification/promotion of suicide, which is against Discord ToS. Please remove this command entirely.", "What's the name of the suicide command?");
     addPromptedButton("Bot Code in Long Desc", "Your bot description is your bot's ~input code. Your long description should not consist of your bot's code, it should be about what your bot does, command list, etc. Please rewrite your description to include more useful information about your bot.", "What language is the bot code in?");
+    
 
 
 
